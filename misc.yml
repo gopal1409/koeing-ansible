@@ -1,0 +1,24 @@
+####play book start with 
+---
+- 
+#this one dash is like an list of items in python
+  #where you want to run the playbook
+  hosts: all 
+  ####to define variables in ansible
+  vars:
+    motd_ubuntu: "Welcome to ubuntu linux ansible rock\n"
+    motd_redhat: "welcome to redhat linux ansible rock\n"
+  tasks:
+    - name: configure message of the day for ubuntu system
+      copy:
+        content: "{{motd_ubuntu}}"
+        dest: /etc/motd
+        
+      when: ansible_distribution == 'Ubuntu'
+          #how ansible is going to identify the first task is related to ubuntu and second task is related to redhat
+
+    - name: configue message of the day for redhat system 
+      copy:
+        content: "{{motd_redhat}}"
+        dest: /etc/motd 
+      when: ansible_distribution == 'RedHat'
