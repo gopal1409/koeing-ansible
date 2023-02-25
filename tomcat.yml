@@ -37,3 +37,7 @@
       ansible.builtin.unarchive:
         src: "{{tomcat_download_location}}"
         dest: /usr/share/tomcat
+        owner: tomcat
+        group: tomcat 
+        remote_src: yes
+        extra_opts: [--stripe-components-1]
