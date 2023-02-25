@@ -44,3 +44,4 @@
         group: tomcat 
         remote_src: yes
         extra_opts: [--stripe-components-1]
+        creates: /usr/share/tomcat/bin
