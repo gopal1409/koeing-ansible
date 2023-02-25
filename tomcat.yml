@@ -21,6 +21,7 @@
     - name: create a user tomcat 
       ansible.builtin.user:
         name: tomcat 
+        #state: absent
         group: tomcat 
     - name: create a tomcat directory where i ll download the tomcat package 
       ansible.builtin.file:
@@ -28,4 +29,11 @@
         state: directory #file link absent
         owner: tomcat 
         group: tomcat 
-   
+    - name: Download the tomcat 
+      ansible.builtin.get_url:
+        url: "{{tomcat_download_url}}"
+        dest: "{{tomcat_download_location}}"
+    - name: unarchive the tomcat 
+      ansible.builtin.unarchive:
+        src: "{{tomcat_download_location}}"
+        dest: /usr/share/tomcat
