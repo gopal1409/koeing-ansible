@@ -1,0 +1,16 @@
+####play book start with 
+---
+- 
+#this one dash is like an list of items in python
+  #where you want to run the playbook
+  hosts: ubuntu
+  ####to define variables in ansible
+  vars:
+    tomcat_download_url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.72/bin/apache-tomcat-9.0.72.tar.gz
+    tomcat_download_location: /usr/share/tomcat/apache-tomcat-9.0.72
+  tasks:
+    - name: install openjdk in ubuntu 
+      ansible.builtin.package:
+        name: default-jdk
+        update_cache: yes
+        state: present #absent
