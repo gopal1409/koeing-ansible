@@ -14,3 +14,18 @@
         name: default-jdk
         update_cache: yes
         state: present #absent
+    - name: create a tomcat group
+      ansible.builtin.group:
+        name: tomcat
+        state: present
+    - name: create a user tomcat 
+      ansible.builtin.user:
+        name: tomcat 
+        group: tomcat 
+    - name: create a tomcat directory where i ll download the tomcat package 
+      ansible.builtin.file:
+        path: /usr/share/tomcat
+        state: directory #file link absent
+        owner: tomcat 
+        group: tomcat 
+   
